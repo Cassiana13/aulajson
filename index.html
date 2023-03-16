@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+
+    <script>
+        let usuario = {
+            nome: 'João',
+            idade: 35,
+            filhos: [
+                { nome: 'Ana', idade: 13},
+                { nome: 'Pedro', idade: 10},
+            ],
+            casado: true,
+        };
+
+        //JSON.stringify(obj) converte um objeto em uma string JSON
+        let strUsuario = JSON.stringify(usuario);
+
+        console.log(usuario, typeof usuario);   
+        
+        //{nome: 'João', idade: 35, filhos: Array(2), casado: true} 'object'
+
+        console.log(strUsuario, typeof strUsuario); 
+        // {"nome":"João","idade":35,"filhos":[{"nome":"Ana","idade":13},{"nome":"Pedro","idade":10}],"casado":true} string
+
+        let usuario2 = JSON.parse(strUsuario);
+        console.log(usuario2, typeof usuario2);
+        // {nome: 'João', idade: 35, filhos: Array(2), casado: true} 'object'
+
+        try {
+            let strUsuario2 = '{"nome":"Rafael","idade":33,"filhos":[{"nome":"João","idade":23},{"nome":"Pedro","idade":10}],"casado":false}';
+
+            let usuario3 = JSON.parse(strUsuario2);
+            console.log(usuario3, typeof usuario3);
+            // {nome: 'Rafael', idade: 33, filhos: Array(2), casado: false}casado: falsefilhos: Array(2)0: {nome: 'João', idade: 23}1: {nome: 'Pedro', idade: 10}length: 2[[Prototype]]: Array(0)idade: 33nome: "Rafael"[[Prototype]]: Object 'object'
+        } catch (e) {
+            console.log(`Erro ${e}`);
+        }
+        
+    </script>
+
+</head>
+<body>
+    <h1>JavaScript</h1>
+</body>
+</html>
